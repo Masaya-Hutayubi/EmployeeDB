@@ -28,7 +28,7 @@ public class Main {
           System.out.println("社員が登録されていません");
         } else {
           for (Employee emp : list){
-            System.out.println(emp.getId() + "｜" + emp.getName() + "｜" + emp.getAge() + "歳");
+            System.out.println(emp);
           }
         }
 
