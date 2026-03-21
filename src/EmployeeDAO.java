@@ -13,13 +13,17 @@ public class EmployeeDAO {
   private static final String DB_USER ="yamagiwamasaya";
   private static final String DB_PASSWORD ="";
 
+  private Connection getConnection() throws Exception{
+    return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+  }
+
   //全社員取得
   public List<Employee> findALL(){
     List<Employee> list =  new ArrayList<>();
     Connection conn = null;
 
     try {
-      conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+      conn = getConnection();
       PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM 社員");
       ResultSet rs = pstmt.executeQuery();
 
@@ -52,7 +56,7 @@ public class EmployeeDAO {
     Connection conn = null;
 
     try {
-      conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+      conn = getConnection();
       PreparedStatement pstmt = conn.prepareStatement(
           "INSERT INTO 社員 (名前, 年齢) VALUES (?,?)"
       );
@@ -79,7 +83,7 @@ public class EmployeeDAO {
     Connection conn = null;
 
     try {
-      conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+      conn = getConnection();
       PreparedStatement pstmt = conn.prepareStatement(
           "DELETE FROM 社員 WHERE 名前 = ?"
       );

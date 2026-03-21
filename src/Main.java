@@ -19,7 +19,14 @@ public class Main {
       System.out.println("3: 社員削除");
       System.out.println("0: 終了");
       System.out.print("番号を入力してください：");
-      input = scanner.nextInt();
+      try {
+        input = scanner.nextInt();
+      } catch (Exception e){
+        System.out.println("数字を入力してください");
+        scanner.nextInt();
+        continue;
+      }
+
 
       if (input == 1){
         //一覧表示

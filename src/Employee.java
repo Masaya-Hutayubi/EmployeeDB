@@ -4,10 +4,7 @@ public class Employee {
   private String name;
   private int age;
 
-  @Override
-  public String toString(){
-    return id + "｜" + name + "｜" + age + "歳" ;
-  }
+
 
   //コンストラクタ
   public Employee(int id, String name, int age){
@@ -27,6 +24,11 @@ public class Employee {
 
   public int getAge(){
     return age;
+  }
+
+  @Override
+  public String toString(){
+    return id + "｜" + name + "｜" + age + "歳" ;
   }
 
 }
