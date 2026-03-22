@@ -17,6 +17,7 @@ public class Main {
       System.out.println("1: 社員一覧表示");
       System.out.println("2: 社員登録");
       System.out.println("3: 社員削除");
+      System.out.println("4: 社員情報更新");
       System.out.println("0: 終了");
       System.out.print("番号を入力してください：");
       try {
@@ -48,12 +49,21 @@ public class Main {
         service.addEmployee(name, age);
         System.out.println((name + "さんを登録しました"));
 
-      } else if (input == 3){
+      } else if (input == 3) {
         //社員の削除
         System.out.print("名前を入力してください：");
         String name = scanner.next();
         service.removeEmployee(name);
         System.out.println(name + "さんを削除しました");
+
+      } else if (input == 4) {
+        //社員情報更新
+        System.out.print("更新する社員の名前を入力してください");
+        String name = scanner.next();
+        System.out.print("新しい年齢を入力してください");
+        int age = scanner.nextInt();
+        service.updateEmployee(name, age);
+        System.out.println(name + "さんの情報を更新しました");
 
       } else if (input == 0) {
         System.out.println("終了します");

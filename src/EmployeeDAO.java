@@ -103,4 +103,31 @@ public class EmployeeDAO {
       }
     }
   }
+
+  //社員情報更新
+  public void update(Employee emp){
+    Connection conn = null;
+
+    try {
+      conn = getConnection();
+      PreparedStatement pstmt = conn.prepareStatement(
+          "UPDATE 社員 SET 年齢 = ? WHERE 名前 = ?"
+      );
+      pstmt.setInt(1, emp.getAge());
+      pstmt.setString(2, emp.getName());
+      pstmt.executeUpdate();
+      logger.info("更新成功：" + emp.getName());
+
+    } catch (Exception e) {
+      logger.severe("エラー：" + e.getMessage());
+    } finally {
+      if (conn != null){
+        try {
+          conn.close();
+        } catch (Exception e){
+          logger.severe("切断失敗：" + e.getMessage());
+        }
+      }
+    }
+  }
 }

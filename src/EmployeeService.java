@@ -34,6 +34,21 @@ public class EmployeeService {
     dao.delete(name);
   }
 
+  //社員情報の更新
+  public void updateEmployee(String name, int age) {
+    if (name == null || name.isEmpty()) {
+      logger.warning("名前が空です");
+      return;
+    }
+    if (age < 0 || age > 100) {
+      logger.warning("年齢が不正です" + age);
+      return;
+    }
+    Employee emp = new Employee(0, name, age);
+    dao.update(emp);
+  }
+
+
 }
 
 
